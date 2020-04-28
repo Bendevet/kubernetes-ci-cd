@@ -14,9 +14,9 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":latest"
+        //   dockerImage = docker.build registry + ":latest"
           def dockerfile = 'applications/hello-kenzan/Dockerfile'
-          def customImage = docker.build("my-image:${env.BUILD_ID}", "-f ${dockerfile} ./applications/hello-kenzan")
+          def customImage = docker.build(registry + ":latest"}, "-f ${dockerfile} ./applications/hello-kenzan")
         }
       }
     }
