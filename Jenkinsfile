@@ -20,11 +20,11 @@ node {
 
        // sh "docker push ${imageName}"
     docker.withRegistry('https://www.docker.com/', 'bendevetdocker') {
-
-        def customImage = docker.build('bendevet/milan:latest')
+         sh "docker push ${imageName}"
+        //def customImage = docker.build('bendevet/milan:latest')
 
         /* Push the container to the custom Registry */
-        customImage.push()
+       // customImage.push()
     }
 
     stage "Deploy"
