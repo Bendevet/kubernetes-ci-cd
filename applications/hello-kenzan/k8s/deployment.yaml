@@ -21,6 +21,10 @@ metadata:
   labels:
     app: hello-kenzan
 spec:
+  selector:
+    matchLabels:
+      app: hello-kenzan
+      tier: hello-kenzan
   strategy:
     type: Recreate
   template:
