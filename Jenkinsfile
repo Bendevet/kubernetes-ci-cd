@@ -16,7 +16,7 @@ pipeline {
         script {
         //   dockerImage = docker.build registry + ":latest"
           def dockerfile = 'applications/hello-kenzan/Dockerfile'
-          def customImage = docker.build(registry + ":latest", "-f ${dockerfile} ./applications/hello-kenzan")
+          dockerImage = docker.build(registry + ":latest", "-f ${dockerfile} ./applications/hello-kenzan")
         }
       }
     }
