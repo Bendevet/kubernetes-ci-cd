@@ -3,6 +3,7 @@ pipeline {
     registry = "bendevet/milan"
     registryCredential = 'bendevetdocker'
     dockerImage = ''
+    def appName = "hello-kenzan"
   }
   agent any
   stages {
