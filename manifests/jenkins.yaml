@@ -1,16 +1,16 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: jenkins
+  name: jenkins-volume
   labels:
     type: local
 spec:
   capacity:
-    storage: 2Gi
+    storage: 4Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/data/jenkins/"
+    path: "/data/jenkins/"  
 
 ---
 
@@ -23,7 +23,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 4Gi
 ---
 
 apiVersion: v1
@@ -84,13 +84,17 @@ spec:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins
   labels:
     app: jenkins
 spec:
+  selector:
+    matchLabels:
+      app: jenkins
+      tier: jenkins
   strategy:
     type: Recreate
   template:
@@ -114,7 +118,7 @@ spec:
           mountPath: "/kubectl-config-context.sh"
           subPath: "kubectl-config-context.sh"
       containers:
-      - image: 127.0.0.1:30400/jenkins:latest
+      - image: bendevet/jenkins:v1
         name: jenkins
         securityContext:
           privileged: true
