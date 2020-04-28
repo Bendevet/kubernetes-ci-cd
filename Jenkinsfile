@@ -29,6 +29,14 @@ pipeline {
         }
       }
     }
+
+    stage('deploy') {
+      steps{
+        script {
+         kubernetesDeploy configs: "applications/${appName}/k8s/*.yaml", kubeconfigId: 'kenzan_kubeconfig'
+        }
+      }
+    }
     // stage('Remove Unused docker image') {
     //   steps{
     //     sh "docker rmi $registry:$BUILD_NUMBER"
