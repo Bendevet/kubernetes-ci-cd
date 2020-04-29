@@ -39,7 +39,7 @@ pipeline {
                         clusterName: "jenkins-cd",
                         zone: "us-east1-b",
                         manifestPattern: "applications/${appName}/k8s/*.yaml",
-                        credentialsId: "jenkins-sa",
+                        credentialsId: "secondmeans-63919",
                         verifyDeployments: true]
                     )
             }
