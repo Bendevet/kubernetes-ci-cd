@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "bendevet/milan"
-    registryCredential = 'bendevetdocker'
+    registryCredential = 'dockerhub_credential'
     dockerImage = ''
     def appName = "hello-kenzan"
   }
@@ -34,7 +34,7 @@ pipeline {
     stage('deploy') {
       steps{
         script {
-         kubernetesDeploy configs: "applications/${appName}/k8s/*.yaml", kubeconfigId: 'kenzan_kubeconfig'
+         kubernetesDeploy configs: "applications/${appName}/k8s/*.yaml", kubeconfigId: 'kubeconfig_credential'
         }
       }
     }

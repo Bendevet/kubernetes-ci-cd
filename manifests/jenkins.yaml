@@ -118,7 +118,7 @@ spec:
           mountPath: "/kubectl-config-context.sh"
           subPath: "kubectl-config-context.sh"
       containers:
-      - image: bendevet/jenkins:v1
+      - image: bendevet/jenkins:v2
         name: jenkins
         securityContext:
           privileged: true
