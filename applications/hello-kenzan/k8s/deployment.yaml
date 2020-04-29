@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bend
+  name: milan
   labels:
-    app: bend
+    app: milan
 spec:
   ports:
-    - port: 70
-      targetPort: 70
+    - port: 80
+      targetPort: 80
       protocol: TCP
       name: http
   selector:
-    app: bend
+    app: milan
 
   type: LoadBalancer
 
@@ -19,23 +19,24 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bend
+  name: milan
 spec:
   replicas: 1
   selector:
     matchLabels:        
-      run: bend
+      run: milan
   template:
     metadata:
       labels:
-        run: bend
+        run: milan
     spec:
       containers:
-      - name: bend
-        image: bendevet/milan:latest
+      - name: milan
+        image: milanevet/milan:latest
+          # milanevet/milan:latest
         ports:
-        - containerPort: 70
+        - containerPort: 80
 
 
 
-        # bendevet/intimacyng:v12
+        # milanevet/intimacyng:v12
