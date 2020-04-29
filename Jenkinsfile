@@ -34,7 +34,12 @@ pipeline {
     stage('deploy') {
       steps{
         script {
-         kubernetesDeploy (kubeconfigId: 'kubeconfig_credential',configs: "applications/${appName}/k8s/*.yaml")
+         kubernetesDeploy (
+             kubeconfigId: 'kubeconfig_credential',configs: "applications/${appName}/k8s/*.yaml",
+             dockerCredentials: [
+                        [credentialsId: 'dockerhub_credential']
+                 ]
+         )
         }
       }
     }
