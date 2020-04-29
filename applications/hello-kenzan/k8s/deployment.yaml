@@ -6,8 +6,8 @@ metadata:
     app: hello-kenzan
 spec:
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 90
+      targetPort: 90
   selector:
     app: hello-kenzan
     tier: hello-kenzan
@@ -37,5 +37,5 @@ spec:
       - image: bendevet/milan:latest
         name: hello-kenzan
         ports:
-        - containerPort: 80
+        - containerPort: 90
           name: hello-kenzan
