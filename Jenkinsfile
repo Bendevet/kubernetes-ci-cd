@@ -31,18 +31,31 @@ pipeline {
       }
     }
 
-    stage('deploy') {
-      steps{
-        script {
-         kubernetesDeploy (
-             kubeconfigId: 'kubeconfig_credential',configs: "applications/${appName}/k8s/*.yaml",
-             dockerCredentials: [
-                        [credentialsId: 'dockerhub_credential']
-                 ]
-         )
-        }
-      }
-    }
+    stage('Deploy Production') {
+            steps{
+                step(
+                  [$class: 'KubernetesEngineBuilder', 
+                        projectId: "secondmeans-63919",
+                        clusterName: "jenkins-cd",
+                        zone: "us-east1-b",
+                        manifestPattern: "applications/${appName}/k8s/*.yaml",
+                        credentialsId: "111030840108115232542",
+                        verifyDeployments: true]
+                    )
+            }
+
+    // stage('deploy') {
+    //   steps{
+    //     script {
+    //      kubernetesDeploy (
+    //          kubeconfigId: 'kubeconfig_credential',configs: "applications/${appName}/k8s/*.yaml",
+    //          dockerCredentials: [
+    //                     [credentialsId: 'dockerhub_credential']
+    //              ]
+    //      )
+    //     }
+    //   }
+    // }
     // stage('Remove Unused docker image') {
     //   steps{
     //     sh "docker rmi $registry:$BUILD_NUMBER"
