@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: milan
-        image: milanevet/milan:latest
+        image: bendevet/milan:latest
           # milanevet/milan:latest
         ports:
         - containerPort: 80
