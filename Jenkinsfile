@@ -34,7 +34,7 @@ pipeline {
     stage('deploy') {
       steps{
         script {
-         kubernetesDeploy configs: "applications/${appName}/k8s/*.yaml", kubeconfigId: 'kubeconfig_credential'
+         kubernetesDeploy (kubeconfigId: 'kubeconfig_credential',configs: "applications/${appName}/k8s/*.yaml")
         }
       }
     }
