@@ -38,7 +38,7 @@ pipeline {
                         projectId: "secondmeans-63919",
                         clusterName: "jenkins-cd",
                         zone: "us-east1-b",
-                        manifestPattern: "applications/${appName}/k8s/*.yaml",
+                        manifestPattern: "applications/${appName}/k8s/deployment.yaml",
                         credentialsId: "secondmeans-63919",
                         verifyDeployments: true]
                     )
