@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: milan
   labels:
-    app: milan
+    run: milan
 spec:
   ports:
     - port: 80
@@ -11,7 +11,7 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: milan
+    run: milan
 
   type: LoadBalancer
 
